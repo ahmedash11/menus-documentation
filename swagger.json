@@ -123,13 +123,13 @@
                         "type":"object",
                         "propreties":{
                             "username":{
-                                "type":"string"
+                                "type": "string"
                             },
                             "password":{
-                                "type":"string"
+                                "type": "string"
                             },
                             "user_type":{
-                                "type":"string",
+                                "type": "string",
                                 "enum":["Restaurant", "User"]
                             }
                         }
