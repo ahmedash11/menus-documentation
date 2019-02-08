@@ -7,7 +7,8 @@
     },
     "host": "",
     "basePath": "",
-    "tags": [{
+    "tags": [
+        {
             "name": "Auth",
             "description": "Auth"
         },
@@ -70,32 +71,22 @@
                     "application/json"
                 ],
                 "parameters": [{
-                    "name": "id",
-                    "in": "path",
-                    "description": "name that need to be updated",
-                    "required": true,
-                    "type": "string"
-                }],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "name": {
-                                        "description": "Updated name of the pet",
-                                        "type": "string"
-                                    },
-                                    "status": {
-                                        "description": "Updated status of the pet",
-                                        "type": "string"
-                                    }
-                                },
-                                "required": ["status"]
-                            }
+                        "name": "id",
+                        "in": "path",
+                        "description": "name that need to be updated",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Updated user object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/User"
                         }
                     }
-                },
+                ],
                 "responses": {
                     "200": {
                         "description": "Editing the User's Attributes",
@@ -129,7 +120,7 @@
                     "description": "Created user object",
                     "required": true,
                     "schema": {
-                        "$ref": "#/definitions/User"
+                            "$ref": "#/definitions/User"
                     }
                 }],
                 "responses": {
@@ -599,7 +590,7 @@
                         "properties": {
                             "phone_numbers": {
                                 "type": "array",
-                                "items": {
+                                "items":{
                                     "type": "integer"
                                 }
                             },
