@@ -7,7 +7,12 @@
     },
     "host": "",
     "basePath": "",
-    "tags": [{
+    "tags": [
+        {
+            "name": "Auth",
+            "description": "Auth"
+        },
+        {
             "name": "User",
             "description": "Actions related to the users"
         },
@@ -54,72 +59,111 @@
                         "description": "successful operation"
                     }
                 }
-            }
-        },
-        "/user/createWithArray": {
-            "post": {
+            },
+            "put": {
                 "tags": [
                     "User"
                 ],
-                "summary": "Creates list of users with given input array",
+                "summary": "Updated user",
+                "description": "This can only be done by the logged in user.",
+                "operationId": "updateUser",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "description": "name that need to be updated",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Updated user object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Editing the User's Attributes",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid user supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            }
+        },
+        "/signUp": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "SignUp into the system",
                 "description": "",
-                "operationId": "createUsersWithArrayInput",
+                "operationId": "",
                 "produces": [
                     "application/json"
                 ],
                 "parameters": [{
                     "in": "body",
                     "name": "body",
-                    "description": "List of user object",
+                    "description": "Created user object",
                     "required": true,
                     "schema": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/definitions/User"
+                        "type":"object",
+                        "propreties":{
+                            "username":{
+                                "type":"string"
+                            },
+                            "password":{
+                                "type":"string"
+                            },
+                            "user_type":{
+                                "type":"string",
+                                "enum":["Restaurant", "User"]
+                            }
                         }
                     }
                 }],
                 "responses": {
-                    "default": {
-                        "description": "successful operation"
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "headers": {
+                            "X-Rate-Limit": {
+                                "type": "integer",
+                                "format": "int32",
+                                "description": "calls per hour allowed by the user"
+                            },
+                            "X-Expires-After": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "date in UTC when token expires"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid username/password supplied"
                     }
                 }
             }
         },
-        "/user/createWithList": {
+        "/login": {
             "post": {
                 "tags": [
-                    "User"
-                ],
-                "summary": "Creates list of users with given input array",
-                "description": "",
-                "operationId": "createUsersWithListInput",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [{
-                    "in": "body",
-                    "name": "body",
-                    "description": "List of user object",
-                    "required": true,
-                    "schema": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/definitions/User"
-                        }
-                    }
-                }],
-                "responses": {
-                    "default": {
-                        "description": "successful operation"
-                    }
-                }
-            }
-        },
-        "/user/login": {
-            "get": {
-                "tags": [
-                    "User"
+                    "Auth"
                 ],
                 "summary": "Logs user into the system",
                 "description": "",
@@ -167,10 +211,10 @@
                 }
             }
         },
-        "/user/logout": {
+        "/logout": {
             "get": {
                 "tags": [
-                    "User"
+                    "Auth"
                 ],
                 "summary": "Logs out current logged in user session",
                 "description": "",
@@ -186,21 +230,21 @@
                 }
             }
         },
-        "/user/{username}": {
+        "/user/:id": {
             "get": {
                 "tags": [
                     "User"
                 ],
-                "summary": "Get user by user name",
+                "summary": "Get user by id",
                 "description": "",
-                "operationId": "getUserByName",
+                "operationId": "",
                 "produces": [
                     "application/json"
                 ],
                 "parameters": [{
-                    "name": "username",
+                    "name": "id",
                     "in": "path",
-                    "description": "The name that needs to be fetched. Use user1 for testing. ",
+                    "description": "The id that needs to be fetched",
                     "required": true,
                     "type": "string"
                 }],
@@ -211,74 +255,6 @@
                             "$ref": "#/definitions/User"
                         }
                     },
-                    "400": {
-                        "description": "Invalid username supplied"
-                    },
-                    "404": {
-                        "description": "User not found"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "User"
-                ],
-                "summary": "Updated user",
-                "description": "This can only be done by the logged in user.",
-                "operationId": "updateUser",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [{
-                        "name": "username",
-                        "in": "path",
-                        "description": "name that need to be updated",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Updated user object",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/User"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Editing the User's Attributes",
-                        "schema": {
-                            "$ref": "#/definitions/User"
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid user supplied"
-                    },
-                    "404": {
-                        "description": "User not found"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "User"
-                ],
-                "summary": "Delete user",
-                "description": "This can only be done by the logged in user.",
-                "operationId": "deleteUser",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [{
-                    "name": "username",
-                    "in": "path",
-                    "description": "The name that needs to be deleted",
-                    "required": true,
-                    "type": "string"
-                }],
-                "responses": {
                     "400": {
                         "description": "Invalid username supplied"
                     },
