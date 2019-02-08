@@ -7,7 +7,8 @@
     },
     "host": "",
     "basePath": "",
-    "tags": [{
+    "tags": [
+        {
             "name": "Auth",
             "description": "Auth"
         },
@@ -119,61 +120,7 @@
                     "description": "Created user object",
                     "required": true,
                     "schema": {
-                        "description": "successful operation",
-                        "schema": {
-                            "title": "The response of the api.",
-                            "type": "object",
-                            "properties": {
-                                "base": {
-                                    "type": "string"
-                                },
-                                "date": {
-                                    "type": "string"
-                                },
-                                "rates": {
-                                    "type": "object",
-                                    "properties": {
-                                        "USD": {
-                                            "type": "number",
-                                            "format": "double",
-                                            "example": 12
-                                        },
-                                        "EUR": {
-                                            "type": "number",
-                                            "format": "double"
-                                        },
-                                        "GBP": {
-                                            "type": "number",
-                                            "format": "double"
-                                        },
-                                        "RUB": {
-                                            "type": "number",
-                                            "format": "double"
-                                        },
-                                        "CHF": {
-                                            "type": "number",
-                                            "format": "double"
-                                        },
-                                        "BRL": {
-                                            "type": "number",
-                                            "format": "double"
-                                        },
-                                        "CZK": {
-                                            "type": "number",
-                                            "format": "double"
-                                        },
-                                        "HKD": {
-                                            "type": "number",
-                                            "format": "double"
-                                        },
-                                        "SGD": {
-                                            "type": "number",
-                                            "format": "double"
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                        "$ref": "#/definitions/User"
                     }
                 }],
                 "responses": {
@@ -643,7 +590,7 @@
                         "properties": {
                             "phone_numbers": {
                                 "type": "array",
-                                "items": {
+                                "items":{
                                     "type": "integer"
                                 }
                             },
