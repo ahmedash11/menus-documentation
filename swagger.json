@@ -13,8 +13,8 @@
             "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
         }
     },
-    "host": "/",
-    "basePath": "/v2",
+    "host": "",
+    "basePath": "",
     "tags": [{
             "name": "User",
             "description": "Actions related to the users"
