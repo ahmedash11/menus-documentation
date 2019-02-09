@@ -495,7 +495,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Editing the User's Attributes",
+                        "description": "Editing the Plate's Attributes",
                         "schema": {
                             "$ref": "#/definitions/Plate"
                         }
