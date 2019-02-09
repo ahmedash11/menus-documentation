@@ -28,7 +28,7 @@
             "description": "Actions related to comments"
         },
         {
-            "name": "Orders",
+            "name": "Order",
             "description": "Actions related to orders"
         },
         {
