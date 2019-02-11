@@ -1,0 +1,37 @@
+"Plate": {
+    "type": "object",
+    "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "restaurant_id": {
+            "$ref": "#/definitions/Restaurant"
+        },
+        "category": {
+            "type": "string"
+        },
+        "name": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string"
+        },
+        "promotion": {
+            "type": "boolean",
+            "default": false
+        },
+        "isOffered": {
+            "type": "boolean",
+            "default": false
+        },
+        "price": {
+            "type": "integer",
+            "format": "int32"
+        },
+        "discount_price": {
+            "type": "integer",
+            "format": "int32"
+        },
+    }
+}

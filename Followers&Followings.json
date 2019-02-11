@@ -1,0 +1,20 @@
+"Followings&Followers": {
+    "type": "object",
+    "properties": {
+        "user_id": {
+            "$ref": "#/definitions/User"
+        },
+        "followers": {
+          "type": "array",
+          "items": {
+              "$ref": "#/definitions/User"
+          }
+        },
+        "followings": {
+          "type": "array",
+          "items": {
+              "$ref": "#/definitions/User"
+          }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+"Favorites": {
+    "type": "object",
+    "properties": {
+        "user_id": {
+            "$ref": "#/definitions/User"
+        },
+        "restaurants": {
+          "type": "array",
+          "items": {
+              "$ref": "#/definitions/Restaurant"
+          }
+        }
+    }
+}

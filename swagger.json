@@ -37,11 +37,11 @@
         },
         {
             "name": "Question",
-            "description": "Actions related to questions"   
+            "description": "Actions related to questions"
         },
         {
             "name": "Chat",
-            "description": "Actions related to chat"    
+            "description": "Actions related to chat"
         }
     ],
     "schemes": [
@@ -594,7 +594,7 @@
                         "description": "User not found"
                     }
                 }
-            } 
+            }
         },
         "/user": {
             "post": {
@@ -1650,7 +1650,7 @@
                         "description": "User not found"
                     }
                 }
-            } 
+            }
         },
         "/chat/:roomId": {
             "post": {
@@ -1713,7 +1713,7 @@
                     }
                 }
             },
-            "get":{  
+            "get":{
                 "tags": [
                     "Chat"
                 ],
@@ -1759,7 +1759,7 @@
                     "404": {
                         "description": "User not found"
                     }
-                }   
+                }
             }
         }
     },

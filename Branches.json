@@ -1,0 +1,31 @@
+"Branches": {
+    "type": "object",
+    "properties": {
+        "restaurant_id": {
+            "$ref": "#/definitions/Restaurant"
+        },
+        "branches": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "phone_numbers": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    },
+                    "branch_address": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "working_hrs": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+
+                }
+            }
+        }
+    }
+}

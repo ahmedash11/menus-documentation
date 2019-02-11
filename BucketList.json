@@ -1,0 +1,15 @@
+"BucketList": {
+    "type": "object",
+    "properties": {
+        "user_id": {
+            "type": "integer",
+            "format": "int64"
+        },
+        "restaurants": {
+          "type": "array",
+          "items": {
+              "$ref": "#/definitions/Restaurant"
+          }
+        }
+    }
+}

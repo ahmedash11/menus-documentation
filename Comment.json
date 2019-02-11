@@ -1,0 +1,33 @@
+"Comment": {
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer",
+            "format": "int64"
+        },
+        "user_id": {
+            "$ref": "#/definitions/User"
+        },
+        "review/comment_id": {
+            "type": "integer",
+            "format": "int64"
+        },
+        "type": {
+            "type": "string",
+            "description": "Comment Type",
+            "enum": [
+                "Comment",
+                "Review"
+            ]
+        },
+        "text": {
+            "type": "string"
+        },
+        "likes": {
+          "type": "array",
+          "items": {
+              "$ref": "#/definitions/User"
+          }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+"Cuisine": {
+    "type": "object",
+    "properties": {
+        "restaurant_id": {
+            "$ref": "#/definitions/Restaurant"
+        },
+        "categories": {
+          "type": "array",
+          "items": {
+              "type": "string"
+          }
+        }
+    }
+}

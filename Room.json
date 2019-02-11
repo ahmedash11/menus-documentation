@@ -1,0 +1,29 @@
+"Room": {
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer",
+            "format": "int64"
+        },
+        "members": {
+          "type": "array",
+          "items": {
+              "$ref": "#/definitions/User"
+          }
+        },
+        "messages": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "from": {
+                        "type": "integer"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+"Cuisine": {
+    "type": "object",
+    "properties": {
+        "restaurant_id/plate_id/review_id": {
+            "type": "integer",
+            "format": "int64"
+        },
+        "type": {
+            "type": "string"
+        },
+        "image_path": {
+            "type": "string"
+        },
+
+    }
+}
