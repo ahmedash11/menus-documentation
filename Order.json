@@ -11,12 +11,6 @@
         "restaurant_id": {
             "$ref": "#/definitions/Restaurant"
         },
-        "plates": {
-            "type": "array",
-            "items": {
-                "$ref": "#/definitions/Plate"
-            }
-        },
         "address": {
             "type": "string",
             "format": "date-time"

@@ -1,0 +1,11 @@
+"OrderPlate": {
+    "type": "object",
+    "properties": {
+        "order_id": {
+            "$ref": "#/definitions/Order"
+        },
+        "plate_id": {
+            "$ref": "#/definitions/Plate"
+        }
+    }
+}

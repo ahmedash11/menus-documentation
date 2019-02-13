@@ -4,11 +4,9 @@
         "user_id": {
             "$ref": "#/definitions/User"
         },
-        "restaurants": {
-          "type": "array",
-          "items": {
-              "$ref": "#/definitions/Restaurant"
-          }
-        }
+        "restaurant_id": {
+            "$ref": "#/definitions/Restaurant"
+        },
+        
     }
 }

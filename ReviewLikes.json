@@ -1,0 +1,17 @@
+"ReviewComments": {
+    "type": "object",
+    "properties": {
+        "review_id": {
+            "$ref": "#/definitions/Review"
+        },
+        "type": {
+            "enum": [
+                "restaurant",
+                "plate"
+            ]
+        },
+        "user_id": {
+            "$ref": "#/definitions/User"
+        }
+    }
+}

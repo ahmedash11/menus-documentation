@@ -1,0 +1,11 @@
+"CommentLikes": {
+    "type": "object",
+    "properties": {
+        "comment_id": {
+            "$ref": "#/definitions/Comment"
+        },
+        "user_id": {
+            "$ref": "#/definitions/User"
+        }
+    }
+}
