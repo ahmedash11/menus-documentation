@@ -1561,7 +1561,7 @@
         "/notification": {
             "get": {
                 "tags": [
-                    "Favorite"
+                    "Notification"
                 ],
                 "summary": "Favorite of user",
                 "description": "",
@@ -1598,9 +1598,9 @@
             },
             "post": {
                 "tags": [
-                    "Favorite"
+                    "Notification"
                 ],
-                "summary": "Favorite restaurant by id",
+                "summary": "Send Notification",
                 "description": "",
                 "operationId": "",
                 "produces": [
