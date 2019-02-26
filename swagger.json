@@ -66,6 +66,10 @@
         {
             "name": "Report",
             "description": "Actions related to reporting"
+        },
+        {
+            "name": "Like",
+            "description": "Actions related to like"          
         }
     ],
     "schemes": [
@@ -465,111 +469,6 @@
                 }
             }
         },
-        "/restaurant/plate/:id/recommend": {
-            "put": {
-                "tags": [
-                    "Plate"
-                ],
-                "summary": "Recommend plate",
-                "description": "",
-                "operationId": "",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [{
-                        "name": "id",
-                        "in": "path",
-                        "description": "The id if the plate",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "promoted": {
-                                    "type": "boolean"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                }
-                            }
-
-                        }
-                    },
-                    "404": {
-                        "description": "User not found"
-                    }
-                }
-            }
-        },
-        "/restaurant/plate/:id/offer": {
-            "put": {
-                "tags": [
-                    "Plate"
-                ],
-                "summary": "Recommend plate",
-                "description": "",
-                "operationId": "",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [{
-                        "name": "id",
-                        "in": "path",
-                        "description": "The id if the plate",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "offered": {
-                                    "type": "boolean"
-                                },
-                                "discountPrice": {
-                                    "type": "integer"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                }
-                            }
-
-                        }
-                    },
-                    "404": {
-                        "description": "User not found"
-                    }
-                }
-            }
-        },
         "/user": {
             "post": {
                 "tags": [
@@ -890,10 +789,10 @@
                 }
             }
         },
-        "/user/:id/report": {
+        "/report/:id": {
             "post": {
                 "tags": [
-                    "User"
+                    "Report"
                 ],
                 "summary": "Report user by id",
                 "description": "",
@@ -1065,59 +964,6 @@
                 }
             }
         },
-        "/review/:id": {
-            "post": {
-                "tags": [
-                    "Comment"
-                ],
-                "summary": "Comment on a review",
-                "description": "",
-                "operationId": "",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [{
-                        "name": "id",
-                        "in": "path",
-                        "description": "The review_id that needs to be commented on",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "comment": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "message": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "User not found"
-                    }
-                }
-            }
-        },
         "/comment/:id": {
             "post": {
                 "tags": [
@@ -1143,6 +989,9 @@
                         "schema": {
                             "type": "object",
                             "properties": {
+                                "type": {
+                                    "type": "string"
+                                },
                                 "comment": {
                                     "type": "string"
                                 }
@@ -1247,10 +1096,10 @@
                 }
             }
         },
-        "/restaurant/:id/favorite": {
-            "put": {
+        "/favorite/:id": {
+            "post": {
                 "tags": [
-                    "Restaurant"
+                    "Favorite"
                 ],
                 "summary": "Favorite restaurant by id",
                 "description": "",
@@ -1286,10 +1135,10 @@
                 }
             }
         },
-        "/restaurant/:id/bucketlist": {
-            "put": {
+        "/bucketlist/:id": {
+            "post": {
                 "tags": [
-                    "Restaurant"
+                    "Bucketlist"
                 ],
                 "summary": "Bucketlist restaurant by id",
                 "description": "",
@@ -1325,12 +1174,12 @@
                 }
             }
         },
-        "/restaurant/:id/check-in": {
-            "put": {
+        "/bucketlist": {
+            "get": {
                 "tags": [
-                    "Restaurant"
+                    "Bucketlist"
                 ],
-                "summary": "Check-in restaurant by id",
+                "summary": "Bucketlist of user",
                 "description": "",
                 "operationId": "",
                 "produces": [
@@ -1339,7 +1188,7 @@
                 "parameters": [{
                     "name": "id",
                     "in": "path",
-                    "description": "The id of the restaurant",
+                    "description": "The id if the user",
                     "required": true,
                     "type": "string"
                 }],
@@ -1364,12 +1213,12 @@
                 }
             }
         },
-        "/user/:id/bucketlist": {
+        "/favorite": {
             "get": {
                 "tags": [
-                    "User"
+                    "Favorite"
                 ],
-                "summary": "Bucketlist of user",
+                "summary": "Favorite of user",
                 "description": "",
                 "operationId": "",
                 "produces": [
@@ -1489,63 +1338,41 @@
                 }
             }
         },
-        "/comment/:id/like": {
-            "put": {
+        "/like/:id": {
+            "post": {
                 "tags": [
-                    "Comment"
+                    "Like"
                 ],
-                "summary": "Like a comment by id",
+                "summary": "Like a comment/review by id",
                 "description": "",
                 "operationId": "",
                 "produces": [
                     "application/json"
                 ],
                 "parameters": [{
-                    "name": "id",
-                    "in": "path",
-                    "description": "The id that needs to be liked",
-                    "required": true,
-                    "type": "string"
-                }],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id that needs to be liked",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "success": {
-                                    "type": "boolean"
+                                "type": {
+                                    "type": "string"
                                 },
-                                "message": {
+                                "id": {
                                     "type": "string"
                                 }
                             }
                         }
-                    },
-                    "404": {
-                        "description": "User not found"
                     }
-                }
-            }
-        },
-        "/review/:id/like": {
-            "put": {
-                "tags": [
-                    "Comment"
                 ],
-                "summary": "Like a review by id",
-                "description": "",
-                "operationId": "",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [{
-                    "name": "id",
-                    "in": "path",
-                    "description": "The id that needs to be liked",
-                    "required": true,
-                    "type": "string"
-                }],
                 "responses": {
                     "200": {
                         "description": "successful operation",
