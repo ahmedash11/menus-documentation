@@ -132,6 +132,49 @@
         }
     }
 },
+"/user/:id/orders": {
+    "get": {
+        "tags": [
+            "User"
+        ],
+        "summary": "Orders made by a user",
+        "description": "",
+        "operationId": "",
+        "produces": [
+            "application/json"
+        ],
+        "parameters": [{
+            "name": "id",
+            "in": "path",
+            "description": "The id if the user",
+            "required": true,
+            "type": "string"
+        }],
+        "responses": {
+            "200": {
+                "description": "successful operation",
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "success": {
+                            "type": "boolean"
+                        },
+                        "orders": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Order"
+                            }
+                        }
+                    }
+
+                }
+            },
+            "404": {
+                "description": "User not found"
+            }
+        }
+    }
+},
 // "/restaurant/plate/:id/recommend": {
         //     "put": {
         //         "tags": [

@@ -69,7 +69,7 @@
         },
         {
             "name": "Like",
-            "description": "Actions related to like"          
+            "description": "Actions related to like"
         }
     ],
     "schemes": [
@@ -334,6 +334,47 @@
                         "description": "User not found"
                     }
                 }
+            },
+            "get": {
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Orders made by user/restaurant",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "The id if the user/restaurant",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "restaurants": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Order"
+                                    }
+                                }
+                            }
+
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
             }
 
         },
@@ -373,52 +414,7 @@
                         "description": "User not found"
                     }
                 }
-            }
-        },
-        "/restaurant/:id/orders": {
-            "get": {
-                "tags": [
-                    "Order"
-                ],
-                "summary": "Orders made to restaurant",
-                "description": "",
-                "operationId": "",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [{
-                    "name": "id",
-                    "in": "path",
-                    "description": "The id if the restaurant",
-                    "required": true,
-                    "type": "string"
-                }],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "restaurants": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/Order"
-                                    }
-                                }
-                            }
-
-                        }
-                    },
-                    "404": {
-                        "description": "User not found"
-                    }
-                }
-            }
-        },
-        "/restaurant/order/:id": {
+            },
             "put": {
                 "tags": [
                     "Order"
@@ -1096,12 +1092,12 @@
                 }
             }
         },
-        "/favorite/:id": {
-            "post": {
+        "/favorite": {
+            "get": {
                 "tags": [
                     "Favorite"
                 ],
-                "summary": "Favorite restaurant by id",
+                "summary": "Favorite of user",
                 "description": "",
                 "operationId": "",
                 "produces": [
@@ -1110,7 +1106,7 @@
                 "parameters": [{
                     "name": "id",
                     "in": "path",
-                    "description": "The id that needs to be favorited",
+                    "description": "The id if the user",
                     "required": true,
                     "type": "string"
                 }],
@@ -1135,12 +1131,12 @@
                 }
             }
         },
-        "/bucketlist/:id": {
+        "/favorite/:id": {
             "post": {
                 "tags": [
-                    "Bucketlist"
+                    "Favorite"
                 ],
-                "summary": "Bucketlist restaurant by id",
+                "summary": "Favorite restaurant by id",
                 "description": "",
                 "operationId": "",
                 "produces": [
@@ -1149,7 +1145,7 @@
                 "parameters": [{
                     "name": "id",
                     "in": "path",
-                    "description": "The id that needs to be bucketlisted",
+                    "description": "The id that needs to be favorited",
                     "required": true,
                     "type": "string"
                 }],
@@ -1213,12 +1209,12 @@
                 }
             }
         },
-        "/favorite": {
-            "get": {
+        "/bucketlist/:id": {
+            "post": {
                 "tags": [
-                    "Favorite"
+                    "Bucketlist"
                 ],
-                "summary": "Favorite of user",
+                "summary": "Bucketlist restaurant by id",
                 "description": "",
                 "operationId": "",
                 "produces": [
@@ -1227,7 +1223,7 @@
                 "parameters": [{
                     "name": "id",
                     "in": "path",
-                    "description": "The id if the user",
+                    "description": "The id that needs to be bucketlisted",
                     "required": true,
                     "type": "string"
                 }],
@@ -1394,49 +1390,7 @@
                 }
             }
         },
-        "/user/:id/orders": {
-            "get": {
-                "tags": [
-                    "User"
-                ],
-                "summary": "Orders made by a user",
-                "description": "",
-                "operationId": "",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [{
-                    "name": "id",
-                    "in": "path",
-                    "description": "The id if the user",
-                    "required": true,
-                    "type": "string"
-                }],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "orders": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/Order"
-                                    }
-                                }
-                            }
 
-                        }
-                    },
-                    "404": {
-                        "description": "User not found"
-                    }
-                }
-            }
-        },
         "/question/:id": {
             "post": {
                 "tags": [
