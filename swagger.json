@@ -42,6 +42,30 @@
         {
             "name": "Chat",
             "description": "Actions related to chat"
+        },
+        {
+            "name": "Follower",
+            "description": "Actions related to followers"
+        },
+        {
+            "name": "Favorite",
+            "description": "Actions related to favoriting"
+        },
+        {
+            "name": "Bucketlist",
+            "description": "Actions related to bucketlist"
+        },
+        {
+            "name": "CheckIn",
+            "description": "Actions related to checkins"
+        },
+        {
+            "name": "Block",
+            "description": "Actions related to blocking"
+        },
+        {
+            "name": "Report",
+            "description": "Actions related to reporting"
         }
     ],
     "schemes": [
@@ -244,7 +268,7 @@
                             "images": {
                                 "type": "array",
                                 "items": {
-                                    "type":"string"
+                                    "type": "string"
                                 }
                             },
                             "image-type": {
@@ -402,25 +426,26 @@
                     "application/json"
                 ],
                 "parameters": [{
-                    "name": "id",
-                    "in": "path",
-                    "description": "The id if the restaurant",
-                    "required": true,
-                    "type": "string"
-                },
-                {
-                    "in": "body",
-                    "name": "body",
-                    "required": true,
-                    "schema": {
-                        "type": "object",
-                        "properties": {
-                            "order-status": {
-                                "type": "string"
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id if the restaurant",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "order-status": {
+                                    "type": "string"
+                                }
                             }
                         }
                     }
-                }],
+                ],
                 "responses": {
                     "200": {
                         "description": "successful operation",
@@ -452,25 +477,26 @@
                     "application/json"
                 ],
                 "parameters": [{
-                    "name": "id",
-                    "in": "path",
-                    "description": "The id if the plate",
-                    "required": true,
-                    "type": "string"
-                },
-                {
-                    "in": "body",
-                    "name": "body",
-                    "required": true,
-                    "schema": {
-                        "type": "object",
-                        "properties": {
-                            "promoted": {
-                                "type": "boolean"
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id if the plate",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "promoted": {
+                                    "type": "boolean"
+                                }
                             }
                         }
                     }
-                }],
+                ],
                 "responses": {
                     "200": {
                         "description": "successful operation",
@@ -502,28 +528,29 @@
                     "application/json"
                 ],
                 "parameters": [{
-                    "name": "id",
-                    "in": "path",
-                    "description": "The id if the plate",
-                    "required": true,
-                    "type": "string"
-                },
-                {
-                    "in": "body",
-                    "name": "body",
-                    "required": true,
-                    "schema": {
-                        "type": "object",
-                        "properties": {
-                            "offered": {
-                                "type": "boolean"
-                            },
-                            "discountPrice": {
-                                "type":"integer"
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id if the plate",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "offered": {
+                                    "type": "boolean"
+                                },
+                                "discountPrice": {
+                                    "type": "integer"
+                                }
                             }
                         }
                     }
-                }],
+                ],
                 "responses": {
                     "200": {
                         "description": "successful operation",
@@ -535,59 +562,6 @@
                                 }
                             }
 
-                        }
-                    },
-                    "404": {
-                        "description": "User not found"
-                    }
-                }
-            }
-        },
-        "/restaurant/question/:id": {
-            "put": {
-                "tags": [
-                    "Question"
-                ],
-                "summary": "Reply to a question",
-                "description": "",
-                "operationId": "",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [{
-                        "name": "id",
-                        "in": "path",
-                        "description": "The question_id the restaurant will respond to",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "text": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "message": {
-                                    "type": "string"
-                                }
-                            }
                         }
                     },
                     "404": {
@@ -633,15 +607,14 @@
                     "application/json"
                 ],
                 "parameters": [{
-                        "in": "body",
-                        "name": "body",
-                        "description": "Updated user object",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/Profile"
-                        }
+                    "in": "body",
+                    "name": "body",
+                    "description": "Updated user object",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/Profile"
                     }
-                ],
+                }],
                 "responses": {
                     "200": {
                         "description": "Editing the User's Attributes",
@@ -878,10 +851,10 @@
                 }
             }
         },
-        "/user/:id/block": {
+        "/block/:id": {
             "put": {
                 "tags": [
-                    "User"
+                    "Block"
                 ],
                 "summary": "Block user by id",
                 "description": "",
@@ -1198,10 +1171,10 @@
                 }
             }
         },
-        "/user/:id/follow": {
+        "/follow/:id": {
             "put": {
                 "tags": [
-                    "User"
+                    "Follower"
                 ],
                 "summary": "Follow user by id",
                 "description": "",
@@ -1235,12 +1208,10 @@
                         "description": "User not found"
                     }
                 }
-            }
-        },
-        "/user/:id/unfollow": {
-            "put": {
+            },
+            "delete": {
                 "tags": [
-                    "User"
+                    "Follower"
                 ],
                 "summary": "UnFollow user by id",
                 "description": "",
@@ -1432,12 +1403,55 @@
                 }
             }
         },
-        "/user/:id/restaurants": {
+        "/checkin": {
             "get": {
                 "tags": [
-                    "User"
+                    "CheckIn"
                 ],
                 "summary": "restaurants visited by a user",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "The id if the user",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "restaurants": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Restaurant"
+                                    }
+                                }
+                            }
+
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            }
+        },
+        "/checkin/:id": {
+            "post": {
+                "tags": [
+                    "CheckIn"
+                ],
+                "summary": "check in a restaurant",
                 "description": "",
                 "operationId": "",
                 "produces": [
@@ -1596,7 +1610,7 @@
                 }
             }
         },
-        "/restaurant/:id/question": {
+        "/question/:id": {
             "post": {
                 "tags": [
                     "Question"
@@ -1624,8 +1638,59 @@
                                 "text": {
                                     "type": "string"
                                 },
-                                "isAnon":{
-                                    "type":"boolean"
+                                "isAnon": {
+                                    "type": "boolean"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Question"
+                ],
+                "summary": "Reply to a question",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "description": "The question_id the restaurant will respond to",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "text": {
+                                    "type": "string"
                                 }
                             }
                         }
@@ -1680,13 +1745,13 @@
                                 "text": {
                                     "type": "string"
                                 },
-                                "isAnon":{
-                                    "type":"boolean"
+                                "isAnon": {
+                                    "type": "boolean"
                                 },
-                                "attachements":{
-                                    "type":"array",
+                                "attachements": {
+                                    "type": "array",
                                     "items": {
-                                        "type":"string"
+                                        "type": "string"
                                     }
                                 }
                             }
@@ -1713,7 +1778,7 @@
                     }
                 }
             },
-            "get":{
+            "get": {
                 "tags": [
                     "Chat"
                 ],
@@ -1724,12 +1789,11 @@
                     "application/json"
                 ],
                 "parameters": [{
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }],
                 "responses": {
                     "200": {
                         "description": "successful operation",
