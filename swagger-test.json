@@ -175,6 +175,65 @@
         }
     }
 },
+"/restaurant/:id/review": {
+    "post": {
+        "tags": [
+            "Restaurant"
+        ],
+        "summary": "Review on restaurant",
+        "description": "",
+        "operationId": "",
+        "produces": [
+            "application/json"
+        ],
+        "parameters": [{
+                "name": "id",
+                "in": "path",
+                "description": "The id that needs to be reviewed",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "in": "body",
+                "name": "body",
+                "required": true,
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "review": {
+                            "type": "string"
+                        },
+                        "locationRating": {
+                            "type": "integer"
+                        },
+                        "ambianceRating": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "successful operation",
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "success": {
+                            "type": "boolean"
+                        },
+                        "message": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "404": {
+                "description": "User not found"
+            }
+        }
+    }
+},
 // "/restaurant/plate/:id/recommend": {
         //     "put": {
         //         "tags": [

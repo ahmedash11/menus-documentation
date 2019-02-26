@@ -24,6 +24,10 @@
             "description": "Actions related to plates"
         },
         {
+            "name": "Review",
+            "description": "Actions related to reviews"
+        },
+        {
             "name": "Comment",
             "description": "Actions related to comments"
         },
@@ -841,12 +845,13 @@
                 }
             }
         },
-        "/restaurant/:id/review": {
+
+        "/review/:id": {
             "post": {
                 "tags": [
-                    "Restaurant"
+                    "Review"
                 ],
-                "summary": "Review on restaurant",
+                "summary": "Review on restaurant/plate",
                 "description": "",
                 "operationId": "",
                 "produces": [
@@ -866,65 +871,7 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "review": {
-                                    "type": "string"
-                                },
-                                "locationRating": {
-                                    "type": "integer"
-                                },
-                                "ambianceRating": {
-                                    "type": "integer"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "message": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "User not found"
-                    }
-                }
-            }
-        },
-        "/restaurant/plate/:id/review": {
-            "post": {
-                "tags": [
-                    "Plate"
-                ],
-                "summary": "Review on restaurant",
-                "description": "",
-                "operationId": "",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [{
-                        "name": "id",
-                        "in": "path",
-                        "description": "The id that needs to be reviewed",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "properties": {
+                                "type":"string",
                                 "review": {
                                     "type": "string"
                                 },
