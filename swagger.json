@@ -74,6 +74,10 @@
         {
             "name": "Like",
             "description": "Actions related to like"
+        },
+        {
+            "name": "Notification",
+            "description": "Actions related to notifications"
         }
     ],
     "schemes": [
@@ -871,7 +875,7 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "type":"string",
+                                "type": "string",
                                 "review": {
                                     "type": "string"
                                 },
@@ -1544,6 +1548,82 @@
                                             }
                                         }
                                     }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            }
+        },
+        "/notification": {
+            "get": {
+                "tags": [
+                    "Favorite"
+                ],
+                "summary": "Favorite of user",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "The id if the user",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Favorite"
+                ],
+                "summary": "Favorite restaurant by id",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "The id that needs to be favorited",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
                                 }
                             }
                         }
