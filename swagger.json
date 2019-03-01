@@ -257,6 +257,38 @@
                         "description": "User not found"
                     }
                 }
+            },
+            "get": {
+                "tags": [
+                    "Plate"
+                ],
+                "summary": "Get plate by id",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "The id that needs to be fetched",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Plate"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid username supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
             }
         },
         "/restaurant/upload": {
@@ -754,8 +786,43 @@
                 }
             }
         },
+        "/block": {
+            "get": {
+                "tags": [
+                    "Block"
+                ],
+                "summary": "Get users blocked by user",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            }
+        },
         "/block/:id": {
-            "put": {
+            "post": {
                 "tags": [
                     "Block"
                 ],
@@ -849,7 +916,6 @@
                 }
             }
         },
-
         "/review/:id": {
             "post": {
                 "tags": [
@@ -862,6 +928,13 @@
                     "application/json"
                 ],
                 "parameters": [{
+                        "name": "type",
+                        "in": "query",
+                        "description": "The type that needs to be reviewed",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
                         "name": "id",
                         "in": "path",
                         "description": "The id that needs to be reviewed",
@@ -909,6 +982,95 @@
                         "description": "User not found"
                     }
                 }
+            },
+            "get": {
+                "tags": [
+                    "Review"
+                ],
+                "summary": "Get review by id",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "name": "type",
+                        "in": "query",
+                        "description": "The type of item (plate/review) on",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id that needs to be fetched",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Review"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid username supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            }
+        },
+        "/review/:id/:review-id": {
+            "get": {
+                "tags": [
+                    "Review"
+                ],
+                "summary": "Get review by id",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id that needs to be fetched",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "The type of item (plate/review) on",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "review-id",
+                        "in": "path",
+                        "description": "The review-id that needs to be fetched",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Review"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid username supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
             }
         },
         "/comment/:id": {
@@ -923,6 +1085,13 @@
                     "application/json"
                 ],
                 "parameters": [{
+                        "name": "type",
+                        "in": "query",
+                        "description": "The type that needs to be commented on",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
                         "name": "id",
                         "in": "path",
                         "description": "The comment_id that needs to be commented on",
@@ -960,6 +1129,95 @@
                                 }
                             }
                         }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "Comment"
+                ],
+                "summary": "Get comment by id",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id that needs to be fetched",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "The type that needs to be commented on",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Comment"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid username supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            }
+        },
+        "/comment/:id/comment-id": {
+            "get": {
+                "tags": [
+                    "Comment"
+                ],
+                "summary": "Get comment by id",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id that needs to be fetched",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "The type that needs to be commented on",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "comment-id",
+                        "in": "path",
+                        "description": "The comment-id that needs to be fetched",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Comment"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid username supplied"
                     },
                     "404": {
                         "description": "User not found"
@@ -1341,7 +1599,6 @@
                 }
             }
         },
-
         "/question/:id": {
             "post": {
                 "tags": [
