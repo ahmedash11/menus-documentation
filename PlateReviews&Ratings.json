@@ -21,12 +21,6 @@
         },
         "review": {
             "type": "string"
-        },
-        "likes": {
-          "type": "array",
-          "items": {
-              "$ref": "#/definitions/User"
-          }
         }
     }
 }

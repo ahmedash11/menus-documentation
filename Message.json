@@ -1,4 +1,4 @@
-"Question": {
+"Message": {
     "type": "object",
     "properties": {
         "id": {
@@ -6,17 +6,13 @@
             "format": "int64"
         },
         "user_id": {
-            "$ref": "#/definitions/User"
+              "$ref": "#/definitions/User"
         },
-        "restaurant_id": {
-            "$ref": "#/definitions/Restaurant"
+        "room_ids": {
+            "$ref": "#/definitions/Room"
         },
         "text": {
             "type": "string"
         },
-        "isAnon": {
-            "type": "boolean",
-            "default": false
-        }
     }
 }
