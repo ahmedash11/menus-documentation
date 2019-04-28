@@ -24,16 +24,48 @@
             "description": "Actions related to plates"
         },
         {
-            "name": "Comment",
-            "description": "Actions related to comments"
-        },
-        {
             "name": "Order",
             "description": "Actions related to orders"
         },
         {
             "name": "Search",
             "description": "Search Functions"
+        },
+        {
+            "name": "Review",
+            "description": "Review Functions" 
+        },
+        {
+            "name": "Comment",
+            "description": "Actions related to comments"
+        },
+        {
+            "name": "Like",
+            "description": "Like Functions" 
+        },
+        {
+            "name": "Block",
+            "description": "Block Functions" 
+        },
+        {
+            "name": "Report",
+            "description": "Report Functions" 
+        },
+        {
+            "name": "Follower",
+            "description": "Follower Functions" 
+        },
+        {
+            "name": "Favorite",
+            "description": "Favorite Functions" 
+        },
+        {
+            "name": "Bucketlist",
+            "description": "Bucketlist Functions" 
+        },
+        {
+            "name": "Checkin",
+            "description": "Checkin Functions" 
         },
         {
             "name": "Question",
@@ -70,7 +102,7 @@
                     }
                 }]
             },
-            "put": {
+            "patch": {
                 "tags": [
                     "Restaurant"
                 ],
@@ -151,165 +183,6 @@
                 }]
             }
         },
-        "/restaurant/:id/orders": {
-            "get": {
-                "tags": [
-                    "Restaurant"
-                ],
-                "summary": "Orders made to restaurant",
-                "description": "",
-                "operationId": "",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [{
-                    "name": "id",
-                    "in": "path",
-                    "description": "The id if the restaurant",
-                    "required": true,
-                    "type": "string"
-                }]
-            }
-        },
-        "/restaurant/order/:id": {
-            "put": {
-                "tags": [
-                    "Order"
-                ],
-                "summary": "Change Order status",
-                "description": "",
-                "operationId": "",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [{
-                        "name": "id",
-                        "in": "path",
-                        "description": "The id if the restaurant",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "order-status": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ]
-            }
-        },
-        "/restaurant/plate/:id/recommend": {
-            "put": {
-                "tags": [
-                    "Plate"
-                ],
-                "summary": "Recommend plate",
-                "description": "",
-                "operationId": "",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [{
-                        "name": "id",
-                        "in": "path",
-                        "description": "The id if the plate",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "promoted": {
-                                    "type": "boolean"
-                                }
-                            }
-                        }
-                    }
-                ]
-            }
-        },
-        "/restaurant/plate/:id/offer": {
-            "put": {
-                "tags": [
-                    "Plate"
-                ],
-                "summary": "Recommend plate",
-                "description": "",
-                "operationId": "",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [{
-                        "name": "id",
-                        "in": "path",
-                        "description": "The id if the plate",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "offered": {
-                                    "type": "boolean"
-                                },
-                                "discountPrice": {
-                                    "type": "integer"
-                                }
-                            }
-                        }
-                    }
-                ]
-            }
-        },
-        "/restaurant/question/:id": {
-            "put": {
-                "tags": [
-                    "Question"
-                ],
-                "summary": "Reply to a question",
-                "description": "",
-                "operationId": "",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [{
-                        "name": "id",
-                        "in": "path",
-                        "description": "The question_id the restaurant will respond to",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "text": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ]
-            }
-        },
         "/plate": {
             "post": {
                 "tags": [
@@ -333,7 +206,25 @@
             }
         },
         "/plate/:id": {
-            "put": {
+            "get": {
+                "tags": [
+                    "Plate"
+                ],
+                "summary": "Get plate by id",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "The id that needs to be fetched",
+                    "required": true,
+                    "type": "string"
+                }]
+            },
+            "patch": {
                 "tags": [
                     "Plate"
                 ],
@@ -383,7 +274,7 @@
                     }
                 }]
             },
-            "put": {
+            "patch": {
                 "tags": [
                     "User"
                 ],
@@ -522,12 +413,26 @@
                 }]
             }
         },
-        "/user/:id/block": {
-            "put": {
+        "/block": {
+            "post": {
                 "tags": [
-                    "User"
+                    "Block"
                 ],
                 "summary": "Block user by id",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": []
+            }
+        },
+        "/block/:id": {
+            "get": {
+                "tags": [
+                    "Block"
+                ],
+                "summary": "Get blocks of user by id",
                 "description": "",
                 "operationId": "",
                 "produces": [
@@ -536,16 +441,16 @@
                 "parameters": [{
                     "name": "id",
                     "in": "path",
-                    "description": "The id that needs to be blocked",
+                    "description": "The id that needs to be fetched",
                     "required": true,
                     "type": "string"
                 }]
             }
         },
-        "/user/:id/report": {
+        "/report/:id": {
             "post": {
                 "tags": [
-                    "User"
+                    "Report"
                 ],
                 "summary": "Report user by id",
                 "description": "",
@@ -577,14 +482,32 @@
                         }
                     }
                 ]
+            },
+            "get": {
+                "tags": [
+                    "Report"
+                ],
+                "summary": "Get reports on user by id",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "The id that needs to be fetched",
+                    "required": true,
+                    "type": "string"
+                }]
             }
         },
-        "/restaurant/:id/review": {
+        "/review/:id": {
             "post": {
                 "tags": [
-                    "Restaurant"
+                    "Review"
                 ],
-                "summary": "Review on restaurant",
+                "summary": "Review on restaurant/plate",
                 "description": "",
                 "operationId": "",
                 "produces": [
@@ -617,54 +540,32 @@
                         }
                     }
                 ]
-            }
-        },
-        "/restaurant/plate/:id/review": {
-            "post": {
+            },
+            "get": {
                 "tags": [
-                    "Plate"
+                    "Review"
                 ],
-                "summary": "Review on restaurant",
+                "summary": "Get reviews by review_id",
                 "description": "",
                 "operationId": "",
                 "produces": [
                     "application/json"
                 ],
                 "parameters": [{
-                        "name": "id",
-                        "in": "path",
-                        "description": "The id that needs to be reviewed",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "review": {
-                                    "type": "string"
-                                },
-                                "qualityRating": {
-                                    "type": "integer"
-                                },
-                                "valuePerPrice": {
-                                    "type": "integer"
-                                }
-                            }
-                        }
-                    }
-                ]
+                    "name": "id",
+                    "in": "path",
+                    "description": "The id that needs to be fetched",
+                    "required": true,
+                    "type": "string"
+                }]
             }
         },
-        "/review/:id": {
+        "/comment/:id": {
             "post": {
                 "tags": [
                     "Comment"
                 ],
-                "summary": "Comment on a review",
+                "summary": "Comment on a review/comment",
                 "description": "",
                 "operationId": "",
                 "produces": [
@@ -691,14 +592,32 @@
                         }
                     }
                 ]
-            }
-        },
-        "/comment/:id": {
-            "post": {
+            },
+            "get": {
                 "tags": [
                     "Comment"
                 ],
-                "summary": "Comment on a review",
+                "summary": "Get comment by target_id",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "The id that needs to be fetched",
+                    "required": true,
+                    "type": "string"
+                }]
+            }
+        },
+        "/follow/:id": {
+            "post": {
+                "tags": [
+                    "Follower"
+                ],
+                "summary": "Followe user",
                 "description": "",
                 "operationId": "",
                 "produces": [
@@ -707,7 +626,7 @@
                 "parameters": [{
                         "name": "id",
                         "in": "path",
-                        "description": "The comment_id that needs to be commented on",
+                        "description": "The user_id that needs to be followed on",
                         "required": true,
                         "type": "string"
                     },
@@ -718,21 +637,19 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "comment": {
+                                "user_id": {
                                     "type": "string"
                                 }
                             }
                         }
                     }
                 ]
-            }
-        },
-        "/user/:id/follow": {
-            "put": {
+            },
+            "get": {
                 "tags": [
-                    "User"
+                    "Follower"
                 ],
-                "summary": "Follow user by id",
+                "summary": "Get Followers by target_id",
                 "description": "",
                 "operationId": "",
                 "produces": [
@@ -741,18 +658,16 @@
                 "parameters": [{
                     "name": "id",
                     "in": "path",
-                    "description": "The id that needs to be followed",
+                    "description": "The id that needs to be fetched",
                     "required": true,
                     "type": "string"
                 }]
-            }
-        },
-        "/user/:id/unfollow": {
-            "put": {
+            },
+            "delete": {
                 "tags": [
-                    "User"
+                    "Follower"
                 ],
-                "summary": "UnFollow user by id",
+                "summary": "Unfollow user by collection_id",
                 "description": "",
                 "operationId": "",
                 "produces": [
@@ -767,10 +682,10 @@
                 }]
             }
         },
-        "/restaurant/:id/favorite": {
-            "put": {
+        "/favorite/:id": {
+            "post": {
                 "tags": [
-                    "Restaurant"
+                    "Favorite"
                 ],
                 "summary": "Favorite restaurant by id",
                 "description": "",
@@ -784,13 +699,44 @@
                     "description": "The id that needs to be favorited",
                     "required": true,
                     "type": "string"
+                },
+                {
+                    "in": "body",
+                    "name": "body",
+                    "required": true,
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "user_id": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }]
+            },
+            "get": {
+                "tags": [
+                    "Favorite"
+                ],
+                "summary": "Get Favorite by user_id",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "The id that needs to be fetched",
+                    "required": true,
+                    "type": "string"
                 }]
             }
         },
-        "/restaurant/:id/bucketlist": {
-            "put": {
+        "/bucketlist": {
+            "post": {
                 "tags": [
-                    "Restaurant"
+                    "Bucketlist"
                 ],
                 "summary": "Bucketlist restaurant by id",
                 "description": "",
@@ -804,35 +750,31 @@
                     "description": "The id that needs to be bucketlisted",
                     "required": true,
                     "type": "string"
-                }]
-            }
-        },
-        "/restaurant/:id/check-in": {
-            "put": {
-                "tags": [
-                    "Restaurant"
-                ],
-                "summary": "Check-in restaurant by id",
-                "description": "",
-                "operationId": "",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [{
-                    "name": "id",
-                    "in": "path",
-                    "description": "The id of the restaurant",
+                },
+                {
+                    "in": "body",
+                    "name": "body",
                     "required": true,
-                    "type": "string"
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "restaurant_id":{
+                                "type": "string"
+                            },
+                            "user_id": {
+                                "type": "string"
+                            }
+                        }
+                    }
                 }]
             }
         },
-        "/user/:id/bucketlist": {
+        "/bucketlist/:id": {
             "get": {
                 "tags": [
-                    "User"
+                    "Bucketlist"
                 ],
-                "summary": "Bucketlist of user",
+                "summary": "Get Bucketlist by user_id",
                 "description": "",
                 "operationId": "",
                 "produces": [
@@ -841,18 +783,54 @@
                 "parameters": [{
                     "name": "id",
                     "in": "path",
-                    "description": "The id if the user",
+                    "description": "The id that needs to be fetched",
                     "required": true,
                     "type": "string"
                 }]
             }
         },
-        "/user/:id/restaurants": {
+        "/checkin": {
+            "post": {
+                "tags": [
+                    "Checkin"
+                ],
+                "summary": "Checkin restaurant by id",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "The id that needs to be checkedinto",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "in": "body",
+                    "name": "body",
+                    "required": true,
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "restaurant_id":{
+                                "type": "string"
+                            },
+                            "user_id": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }]
+            }
+        },
+        "/checkin/:id": {
             "get": {
                 "tags": [
-                    "User"
+                    "Bucketlist"
                 ],
-                "summary": "restaurants visited by a user",
+                "summary": "Get Bucketlist by user_id",
                 "description": "",
                 "operationId": "",
                 "produces": [
@@ -861,36 +839,16 @@
                 "parameters": [{
                     "name": "id",
                     "in": "path",
-                    "description": "The id if the user",
+                    "description": "The id that needs to be fetched",
                     "required": true,
                     "type": "string"
                 }]
             }
         },
-        "/comment/:id/like": {
-            "put": {
+        "/like/:id": {
+            "post": {
                 "tags": [
-                    "Comment"
-                ],
-                "summary": "Like a comment by id",
-                "description": "",
-                "operationId": "",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [{
-                    "name": "id",
-                    "in": "path",
-                    "description": "The id that needs to be liked",
-                    "required": true,
-                    "type": "string"
-                }]
-            }
-        },
-        "/review/:id/like": {
-            "put": {
-                "tags": [
-                    "Comment"
+                    "Like"
                 ],
                 "summary": "Like a review by id",
                 "description": "",
@@ -934,6 +892,24 @@
                         }
                     }
                 }]
+            },
+            "get": {
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Orders made by a user",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "The id if the user",
+                    "required": true,
+                    "type": "string"
+                }]
             }
         },
         "/order/:id": {
@@ -953,30 +929,79 @@
                     "required": true,
                     "type": "string"
                 }]
-            }
-        },
-        "/user/:id/orders": {
-            "get": {
+            },
+            "patch": {
                 "tags": [
-                    "User"
+                    "Order"
                 ],
-                "summary": "Orders made by a user",
+                "summary": "Make an order",
                 "description": "",
                 "operationId": "",
                 "produces": [
                     "application/json"
                 ],
-                "parameters": [{
-                    "name": "id",
-                    "in": "path",
-                    "description": "The id if the user",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id if the order",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                    "in": "body",
+                    "name": "body",
                     "required": true,
-                    "type": "string"
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "plates": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/definitions/Plate"
+                                }
+                            }
+                        }
+                    }
                 }]
             }
         },
-        "/restaurant/:id/question": {
+        "/question": {
             "post": {
+                "tags": [
+                    "Question"
+                ],
+                "summary": "Send question to restaurant",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "restaurant_id":{
+                                    "type": "string"
+                                },
+                                "text": {
+                                    "type": "string"
+                                },
+                                "isAnon": {
+                                    "type": "boolean"
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "/question/:id": {
+            "patch": {
                 "tags": [
                     "Question"
                 ],
@@ -1074,42 +1099,6 @@
         }
     },
     "definitions": {
-        "Order": {
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "user_id": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "restaurant_id": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "plates": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Plate"
-                    }
-                },
-                "address": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "status": {
-                    "type": "string",
-                    "description": "Order Status",
-                    "enum": [
-                        "placed",
-                        "approved",
-                        "delivered"
-                    ]
-                }
-            }
-        },
         "User": {
             "type": "object",
             "properties": {
@@ -1167,6 +1156,83 @@
                 "name": {
                     "type": "string",
                     "example": "Ahmed Kamal"
+                }
+            }
+        },
+        "Plate": {
+            "type": "object",
+            "properties": {
+                "restaurant_id": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "category": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "promotion": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "isOffered": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "prices": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "size": {
+                                "type": "string"
+                            },
+                            "price": {
+                                "type": "integer",
+                                "format": "int64"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "Order": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "user_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "restaurant_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "plates": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Plate"
+                    }
+                },
+                "address": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Order Status",
+                    "enum": [
+                        "placed",
+                        "approved",
+                        "delivered"
+                    ]
                 }
             }
         },
@@ -1423,62 +1489,6 @@
                                 "format": "int64"
                             }
 
-                        }
-                    }
-                }
-            }
-        },
-        "ApiResponse": {
-            "type": "object",
-            "properties": {
-                "code": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "type": {
-                    "type": "string"
-                },
-                "message": {
-                    "type": "string"
-                }
-            }
-        },
-        "Plate": {
-            "type": "object",
-            "properties": {
-                "restaurant_id": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "category": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "promotion": {
-                    "type": "boolean",
-                    "default": false
-                },
-                "isOffered": {
-                    "type": "boolean",
-                    "default": false
-                },
-                "prices": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "size": {
-                                "type": "string"
-                            },
-                            "price": {
-                                "type": "integer",
-                                "format": "int64"
-                            }
                         }
                     }
                 }
