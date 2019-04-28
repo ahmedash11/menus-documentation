@@ -828,7 +828,7 @@
         "/checkin/:id": {
             "get": {
                 "tags": [
-                    "Bucketlist"
+                    "Checkin"
                 ],
                 "summary": "Get Bucketlist by user_id",
                 "description": "",
@@ -860,6 +860,41 @@
                     "name": "id",
                     "in": "path",
                     "description": "The id that needs to be liked",
+                    "required": true,
+                    "type": "string"
+                }]
+            },
+            "get": {
+                "tags": [
+                    "Like"
+                ],
+                "summary": "Get likes on target_id",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }]
+            },
+            "delete": {
+                "tags": [
+                    "Like"
+                ],
+                "summary": "Unlike by target_id",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "The id that needs to be unliked",
                     "required": true,
                     "type": "string"
                 }]
