@@ -5,25 +5,11 @@
             "type": "integer",
             "format": "int64"
         },
-        "members": {
-          "type": "array",
-          "items": {
-              "$ref": "#/definitions/User"
-          }
+        "type": {
+            "enum": [
+                "private",
+                "public"
+            ]
         },
-        "messages": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "from": {
-                        "type": "integer"
-                    },
-                    "message": {
-                        "type": "string"
-                    }
-                }
-            }
-        }
     }
 }

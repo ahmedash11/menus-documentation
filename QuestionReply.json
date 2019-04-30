@@ -1,0 +1,14 @@
+"QuestionReply": {
+    "type": "object",
+    "properties": {
+        "question_id": {
+            "$ref": "#/definitions/Question"
+        },
+        "from": {
+            "$ref": "#/definitions/User"
+        },
+        "text": {
+            "$ref": "#/definitions/User"
+        }
+    }
+}

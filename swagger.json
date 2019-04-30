@@ -100,7 +100,18 @@
                     "schema": {
                         "$ref": "#/definitions/Restaurant"
                     }
-                }]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Creating the Restaurant's",
+                        "schema": {
+                            "$ref": "#/definitions/Restaurant"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid user supplied"
+                    }
+                }
             },
             "patch": {
                 "tags": [
@@ -128,7 +139,21 @@
                             "$ref": "#/definitions/Restaurant"
                         }
                     }
-                ]
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Updating the Restaurant's Attributes",
+                        "schema": {
+                            "$ref": "#/definitions/Restaurant"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid user supplied"
+                    },
+                    "404": {
+                        "description": "Restaurant not found"
+                    }
+                }
             }
         },
         "/restaurant/:id": {
@@ -148,10 +173,24 @@
                     "description": "The id that needs to be fetched",
                     "required": true,
                     "type": "string"
-                }]
+                }],                
+                "responses": {
+                    "200": {
+                        "description": "Fetching a Restaurant's Attributes",
+                        "schema": {
+                            "$ref": "#/definitions/Restaurant"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid user supplied"
+                    },
+                    "404": {
+                        "description": "Restaurant not found"
+                    }
+                }
             }
         },
-        "/restaurant/upload": {
+        "/restaurant/upload/:id": {
             "post": {
                 "tags": [
                     "Restaurant"
@@ -180,7 +219,21 @@
                             }
                         }
                     }
-                }]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Upload Complete",
+                        "schema": {
+                            "$ref": "#/definitions/Restaurant"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid user supplied"
+                    },
+                    "404": {
+                        "description": "Restaurant not found"
+                    }
+                }
             }
         },
         "/plate": {
@@ -202,7 +255,21 @@
                     "schema": {
                         "$ref": "#/definitions/Plate"
                     }
-                }]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Creating the Plate's Attributes",
+                        "schema": {
+                            "$ref": "#/definitions/Plate"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid user supplied"
+                    },
+                    "404": {
+                        "description": "Plate not found"
+                    }
+                }
             }
         },
         "/plate/:id": {
@@ -222,7 +289,21 @@
                     "description": "The id that needs to be fetched",
                     "required": true,
                     "type": "string"
-                }]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Fetching the Plate's Attributes",
+                        "schema": {
+                            "$ref": "#/definitions/Plate"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid user supplied"
+                    },
+                    "404": {
+                        "description": "Plate not found"
+                    }
+                }
             },
             "patch": {
                 "tags": [
@@ -250,7 +331,21 @@
                             "$ref": "#/definitions/Plate"
                         }
                     }
-                ]
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Editing the Plate's Attributes",
+                        "schema": {
+                            "$ref": "#/definitions/Plate"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid user supplied"
+                    },
+                    "404": {
+                        "description": "Plate not found"
+                    }
+                }
             }
         },
         "/user": {
@@ -272,7 +367,18 @@
                     "schema": {
                         "$ref": "#/definitions/Profile"
                     }
-                }]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Creating a User",
+                        "schema": {
+                            "$ref": "#/definitions/Profile"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid user supplied"
+                    }
+                }
             },
             "patch": {
                 "tags": [
@@ -292,7 +398,21 @@
                     "schema": {
                         "$ref": "#/definitions/Profile"
                     }
-                }]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Editing the User's Attributes",
+                        "schema": {
+                            "$ref": "#/definitions/Profile"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid user supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
             }
         },
         "/signUp": {
@@ -314,7 +434,15 @@
                     "schema": {
                         "$ref": "#/definitions/User"
                     }
-                }]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Signing Up",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                }
             }
         },
         "/login": {
@@ -336,7 +464,15 @@
                     "schema": {
                         "$ref": "#/definitions/User"
                     }
-                }]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Logging In successful",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                }
             }
         },
         "/logout": {
@@ -370,7 +506,21 @@
                     "description": "The id that needs to be fetched",
                     "required": true,
                     "type": "string"
-                }]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Fetching the Users's Attributes",
+                        "schema": {
+                            "$ref": "#/definitions/Profile"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid user supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
             }
         },
         "/search": {
@@ -390,7 +540,27 @@
                     "description": "User/Restaurant name",
                     "required": true,
                     "type": "string"
-                }]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "oneOf": [{
+                                    "$ref": "#/definitions/Profile"
+                                },
+                                {
+                                    "$ref": "#/definitions/Restaurant"
+                                }
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid username supplied"
+                    },
+                    "404": {
+                        "description": "User/Restaurant not found"
+                    }
+                }
             }
         },
         "/search/restaurant": {
@@ -410,7 +580,24 @@
                     "description": "Place/Categories",
                     "required": true,
                     "type": "string"
-                }]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Restaurants"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Place/Category supplied"
+                    },
+                    "404": {
+                        "description": "No Restaurants Found"
+                    }
+                }
             }
         },
         "/block": {
@@ -424,7 +611,39 @@
                 "produces": [
                     "application/json"
                 ],
-                "parameters": []
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "Created user object",
+                    "required": true,
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "blocker": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
             }
         },
         "/block/:id": {
@@ -444,7 +663,18 @@
                     "description": "The id that needs to be fetched",
                     "required": true,
                     "type": "string"
-                }]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Profile"
+                            }
+                        }
+                    }
+                }
             }
         },
         "/report/:id": {
@@ -481,7 +711,26 @@
                             }
                         }
                     }
-                ]
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
             },
             "get": {
                 "tags": [
@@ -499,7 +748,18 @@
                     "description": "The id that needs to be fetched",
                     "required": true,
                     "type": "string"
-                }]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Profile"
+                            }
+                        }
+                    }
+                }
             }
         },
         "/review/:id": {
@@ -539,7 +799,26 @@
                             }
                         }
                     }
-                ]
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Plate/Restaurant not found"
+                    }
+                }
             },
             "get": {
                 "tags": [
@@ -557,7 +836,18 @@
                     "description": "The id that needs to be fetched",
                     "required": true,
                     "type": "string"
-                }]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Reviews"
+                            }
+                        }
+                    }
+                }
             }
         },
         "/comment/:id": {
@@ -591,7 +881,26 @@
                             }
                         }
                     }
-                ]
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Plate/Restaurant not found"
+                    }
+                }
             },
             "get": {
                 "tags": [
@@ -609,7 +918,18 @@
                     "description": "The id that needs to be fetched",
                     "required": true,
                     "type": "string"
-                }]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Comments"
+                            }
+                        }
+                    }
+                }
             }
         },
         "/follow/:id": {
@@ -643,7 +963,29 @@
                             }
                         }
                     }
-                ]
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": { 
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "followings":{
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Followings"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "get": {
                 "tags": [
@@ -661,7 +1003,29 @@
                     "description": "The id that needs to be fetched",
                     "required": true,
                     "type": "string"
-                }]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": { 
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "followings":{
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Followings"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "delete": {
                 "tags": [
@@ -679,7 +1043,26 @@
                     "description": "The id that needs to be unfollowed",
                     "required": true,
                     "type": "string"
-                }]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
             }
         },
         "/favorite/:id": {
@@ -712,7 +1095,26 @@
                             }
                         }
                     }
-                }]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
             },
             "get": {
                 "tags": [
@@ -730,7 +1132,29 @@
                     "description": "The id that needs to be fetched",
                     "required": true,
                     "type": "string"
-                }]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": { 
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "favorites":{
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Favorites"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         },
         "/bucketlist": {
@@ -766,7 +1190,32 @@
                             }
                         }
                     }
-                }]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "bucketlist":{
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#/definitions/BucketList"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
             }
         },
         "/bucketlist/:id": {
@@ -786,7 +1235,32 @@
                     "description": "The id that needs to be fetched",
                     "required": true,
                     "type": "string"
-                }]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "bucketlist":{
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/BucketList"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
             }
         },
         "/checkin": {
@@ -822,7 +1296,32 @@
                             }
                         }
                     }
-                }]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "checkedin":{
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#/definitions/CheckedIn"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
             }
         },
         "/checkin/:id": {
@@ -842,7 +1341,32 @@
                     "description": "The id that needs to be fetched",
                     "required": true,
                     "type": "string"
-                }]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "checked-in":{
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CheckedIn"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
             }
         },
         "/like/:id": {
@@ -862,7 +1386,26 @@
                     "description": "The id that needs to be liked",
                     "required": true,
                     "type": "string"
-                }]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
             },
             "get": {
                 "tags": [
@@ -879,7 +1422,26 @@
                     "in": "path",
                     "required": true,
                     "type": "string"
-                }]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
             },
             "delete": {
                 "tags": [
@@ -897,7 +1459,26 @@
                     "description": "The id that needs to be unliked",
                     "required": true,
                     "type": "string"
-                }]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
             }
         },
         "/order": {
@@ -926,7 +1507,32 @@
                             }
                         }
                     }
-                }]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "order":{
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#/definitions/Order"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
             },
             "get": {
                 "tags": [
@@ -944,7 +1550,32 @@
                     "description": "The id if the user",
                     "required": true,
                     "type": "string"
-                }]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "orders":{
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#/definitions/Order"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Order not found"
+                    }
+                }
             }
         },
         "/order/:id": {
@@ -963,7 +1594,32 @@
                     "in": "path",
                     "required": true,
                     "type": "string"
-                }]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "orders":{
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Order"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
             },
             "patch": {
                 "tags": [
@@ -998,7 +1654,32 @@
                             }
                         }
                     }
-                }]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "order":{
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Order"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
             }
         },
         "/question": {
@@ -1032,7 +1713,32 @@
                             }
                         }
                     }
-                ]
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "question":{
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#/definitions/Question"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Restaurant not found"
+                    }
+                }
             }
         },
         "/question/:id": {
@@ -1069,7 +1775,32 @@
                             }
                         }
                     }
-                ]
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "question":{
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#/definitions/Question"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Restaurant not found"
+                    }
+                }
             }
         },
         "/chat/:roomId": {
@@ -1129,7 +1860,37 @@
                     "in": "path",
                     "required": true,
                     "type": "string"
-                }]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "messages": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "from": {
+                                                "type": "integer"
+                                            },
+                                            "message": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }   
             }
         }
     },
@@ -1338,7 +2099,7 @@
                 }
             }
         },
-        "Reviews&Ratings": {
+        "Reviews": {
             "type": "object",
             "properties": {
                 "id": {
@@ -1431,7 +2192,7 @@
                 }
             }
         },
-        "Followings&Followers": {
+        "Followings": {
             "type": "object",
             "properties": {
                 "user_id": {

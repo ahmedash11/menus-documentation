@@ -5,17 +5,14 @@
             "type": "integer",
             "format": "int64"
         },
-        "user_id": {
+        "from_id": {
             "$ref": "#/definitions/User"
         },
         "text": {
             "type": "string"
         },
-        "to": {
-            "type": "array",
-            "items": {
-                "$ref": "#/definitions/User"
-            }
+        "to_id": {
+          "$ref": "#/definitions/User"  
         }
     }
 }
