@@ -24,10 +24,6 @@
             "description": "Actions related to plates"
         },
         {
-            "name": "Comment",
-            "description": "Actions related to comments"
-        },
-        {
             "name": "Order",
             "description": "Actions related to orders"
         },
@@ -36,12 +32,48 @@
             "description": "Search Functions"
         },
         {
+            "name": "Review",
+            "description": "Review Functions" 
+        },
+        {
+            "name": "Comment",
+            "description": "Actions related to comments"
+        },
+        {
+            "name": "Like",
+            "description": "Like Functions" 
+        },
+        {
+            "name": "Block",
+            "description": "Block Functions" 
+        },
+        {
+            "name": "Report",
+            "description": "Report Functions" 
+        },
+        {
+            "name": "Follower",
+            "description": "Follower Functions" 
+        },
+        {
+            "name": "Favorite",
+            "description": "Favorite Functions" 
+        },
+        {
+            "name": "Bucketlist",
+            "description": "Bucketlist Functions" 
+        },
+        {
+            "name": "Checkin",
+            "description": "Checkin Functions" 
+        },
+        {
             "name": "Question",
-            "description": "Actions related to questions"   
+            "description": "Actions related to questions"
         },
         {
             "name": "Chat",
-            "description": "Actions related to chat"    
+            "description": "Actions related to chat"
         }
     ],
     "schemes": [
@@ -61,12 +93,18 @@
                     "application/json"
                 ],
                 "responses": {
-                    "default": {
-                        "description": "successful operation"
+                    "200": {
+                        "description": "Creating the Restaurant's",
+                        "schema": {
+                            "$ref": "#/definitions/Restaurant"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid user supplied"
                     }
                 }
             },
-            "put": {
+            "patch": {
                 "tags": [
                     "Restaurant"
                 ],
@@ -78,7 +116,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Editing the Restaurant's Attributes",
+                        "description": "Updating the Restaurant's Attributes",
                         "schema": {
                             "$ref": "#/definitions/Restaurant"
                         }
@@ -87,7 +125,7 @@
                         "description": "Invalid user supplied"
                     },
                     "404": {
-                        "description": "User not found"
+                        "description": "Restaurant not found"
                     }
                 }
             }
@@ -102,24 +140,24 @@
                 "operationId": "",
                 "produces": [
                     "application/json"
-                ],
+                ],              
                 "responses": {
                     "200": {
-                        "description": "successful operation",
+                        "description": "Fetching a Restaurant's Attributes",
                         "schema": {
                             "$ref": "#/definitions/Restaurant"
                         }
                     },
                     "400": {
-                        "description": "Invalid username supplied"
+                        "description": "Invalid user supplied"
                     },
                     "404": {
-                        "description": "User not found"
+                        "description": "Restaurant not found"
                     }
                 }
             }
         },
-        "/restaurant/upload": {
+        "/restaurant/upload/:id": {
             "post": {
                 "tags": [
                     "Restaurant"
@@ -131,169 +169,20 @@
                     "application/json"
                 ],
                 "responses": {
-                    "default": {
-                        "description": "successful operation"
+                    "200": {
+                        "description": "Upload Complete",
+                        "schema": {
+                            "$ref": "#/definitions/Restaurant"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid user supplied"
+                    },
+                    "404": {
+                        "description": "Restaurant not found"
                     }
                 }
             }
-        },
-        "/restaurant/:id/orders": {
-            "get": {
-                "tags": [
-                    "Restaurant"
-                ],
-                "summary": "Orders made to restaurant",
-                "description": "",
-                "operationId": "",
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "restaurants": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/Order"
-                                    }
-                                }
-                            }
-
-                        }
-                    },
-                    "404": {
-                        "description": "User not found"
-                    }
-                }
-            }
-        },
-        "/restaurant/order/:id": {
-            "put": {
-                "tags": [
-                    "Order"
-                ],
-                "summary": "Change Order status",
-                "description": "",
-                "operationId": "",
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                }
-                            }
-
-                        }
-                    },
-                    "404": {
-                        "description": "User not found"
-                    }
-                }
-            }
-        },
-        "/restaurant/plate/:id/recommend": {
-            "put": {
-                "tags": [
-                    "Plate"
-                ],
-                "summary": "Recommend plate",
-                "description": "",
-                "operationId": "",
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                }
-                            }
-
-                        }
-                    },
-                    "404": {
-                        "description": "User not found"
-                    }
-                }
-            }
-        },
-        "/restaurant/plate/:id/offer": {
-            "put": {
-                "tags": [
-                    "Plate"
-                ],
-                "summary": "Recommend plate",
-                "description": "",
-                "operationId": "",
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                }
-                            }
-
-                        }
-                    },
-                    "404": {
-                        "description": "User not found"
-                    }
-                }
-            }
-        },
-        "/restaurant/question/:id": {
-            "put": {
-                "tags": [
-                    "Question"
-                ],
-                "summary": "Reply to a question",
-                "description": "",
-                "operationId": "",
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "message": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "User not found"
-                    }
-                }
-            } 
         },
         "/plate": {
             "post": {
@@ -307,14 +196,48 @@
                     "application/json"
                 ],
                 "responses": {
-                    "default": {
-                        "description": "successful operation"
+                    "200": {
+                        "description": "Creating the Plate's Attributes",
+                        "schema": {
+                            "$ref": "#/definitions/Plate"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid user supplied"
+                    },
+                    "404": {
+                        "description": "Plate not found"
                     }
                 }
             }
         },
         "/plate/:id": {
-            "put": {
+            "get": {
+                "tags": [
+                    "Plate"
+                ],
+                "summary": "Get plate by id",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Fetching the Plate's Attributes",
+                        "schema": {
+                            "$ref": "#/definitions/Plate"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid user supplied"
+                    },
+                    "404": {
+                        "description": "Plate not found"
+                    }
+                }
+            },
+            "patch": {
                 "tags": [
                     "Plate"
                 ],
@@ -335,7 +258,7 @@
                         "description": "Invalid user supplied"
                     },
                     "404": {
-                        "description": "User not found"
+                        "description": "Plate not found"
                     }
                 }
             }
@@ -352,12 +275,18 @@
                     "application/json"
                 ],
                 "responses": {
-                    "default": {
-                        "description": "successful operation"
+                    "200": {
+                        "description": "Creating a User",
+                        "schema": {
+                            "$ref": "#/definitions/Profile"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid user supplied"
                     }
                 }
             },
-            "put": {
+            "patch": {
                 "tags": [
                     "User"
                 ],
@@ -396,25 +325,10 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "successful operation",
+                        "description": "Signing Up",
                         "schema": {
-                            "type": "string"
-                        },
-                        "headers": {
-                            "X-Rate-Limit": {
-                                "type": "integer",
-                                "format": "int32",
-                                "description": "calls per hour allowed by the user"
-                            },
-                            "X-Expires-After": {
-                                "type": "string",
-                                "format": "date-time",
-                                "description": "date in UTC when token expires"
-                            }
+                            "$ref": "#/definitions/User"
                         }
-                    },
-                    "400": {
-                        "description": "Invalid username/password supplied"
                     }
                 }
             }
@@ -432,25 +346,10 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "successful operation",
+                        "description": "Logging In successful",
                         "schema": {
-                            "type": "string"
-                        },
-                        "headers": {
-                            "X-Rate-Limit": {
-                                "type": "integer",
-                                "format": "int32",
-                                "description": "calls per hour allowed by the user"
-                            },
-                            "X-Expires-After": {
-                                "type": "string",
-                                "format": "date-time",
-                                "description": "date in UTC when token expires"
-                            }
+                            "$ref": "#/definitions/User"
                         }
-                    },
-                    "400": {
-                        "description": "Invalid username/password supplied"
                     }
                 }
             }
@@ -466,11 +365,7 @@
                 "produces": [
                     "application/json"
                 ],
-                "responses": {
-                    "default": {
-                        "description": "successful operation"
-                    }
-                }
+                "parameters": []
             }
         },
         "/user/:id": {
@@ -486,13 +381,13 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "successful operation",
+                        "description": "Fetching the Users's Attributes",
                         "schema": {
                             "$ref": "#/definitions/Profile"
                         }
                     },
                     "400": {
-                        "description": "Invalid username supplied"
+                        "description": "Invalid user supplied"
                     },
                     "404": {
                         "description": "User not found"
@@ -563,10 +458,10 @@
                 }
             }
         },
-        "/user/:id/block": {
-            "put": {
+        "/block": {
+            "post": {
                 "tags": [
-                    "User"
+                    "Block"
                 ],
                 "summary": "Block user by id",
                 "description": "",
@@ -595,10 +490,34 @@
                 }
             }
         },
-        "/user/:id/report": {
+        "/block/:id": {
+            "get": {
+                "tags": [
+                    "Block"
+                ],
+                "summary": "Get blocks of user by id",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Profile"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/report/:id": {
             "post": {
                 "tags": [
-                    "User"
+                    "Report"
                 ],
                 "summary": "Report user by id",
                 "description": "",
@@ -625,14 +544,12 @@
                         "description": "User not found"
                     }
                 }
-            }
-        },
-        "/restaurant/:id/review": {
-            "post": {
+            },
+            "get": {
                 "tags": [
-                    "Restaurant"
+                    "Report"
                 ],
-                "summary": "Review on restaurant",
+                "summary": "Get reports on user by id",
                 "description": "",
                 "operationId": "",
                 "produces": [
@@ -642,52 +559,11 @@
                     "200": {
                         "description": "successful operation",
                         "schema": {
-                            "type": "object",
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "message": {
-                                    "type": "string"
-                                }
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Profile"
                             }
                         }
-                    },
-                    "404": {
-                        "description": "User not found"
-                    }
-                }
-            }
-        },
-        "/restaurant/plate/:id/review": {
-            "post": {
-                "tags": [
-                    "Plate"
-                ],
-                "summary": "Review on restaurant",
-                "description": "",
-                "operationId": "",
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "message": {
-                                    "type": "string",
-                                    "example": "Your review was posted successfully"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "User not found"
                     }
                 }
             }
@@ -695,9 +571,9 @@
         "/review/:id": {
             "post": {
                 "tags": [
-                    "Comment"
+                    "Review"
                 ],
-                "summary": "Comment on a review",
+                "summary": "Review on restaurant/plate",
                 "description": "",
                 "operationId": "",
                 "produces": [
@@ -719,7 +595,29 @@
                         }
                     },
                     "404": {
-                        "description": "User not found"
+                        "description": "Plate/Restaurant not found"
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "Review"
+                ],
+                "summary": "Get reviews by review_id",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Reviews"
+                            }
+                        }
                     }
                 }
             }
@@ -729,7 +627,127 @@
                 "tags": [
                     "Comment"
                 ],
-                "summary": "Comment on a review",
+                "summary": "Comment on a review/comment",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Plate/Restaurant not found"
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "Comment"
+                ],
+                "summary": "Get comment by target_id",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Comments"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/follow/:id": {
+            "post": {
+                "tags": [
+                    "Follower"
+                ],
+                "summary": "Followe user",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": { 
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "followings":{
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Followings"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "Follower"
+                ],
+                "summary": "Get Followers by target_id",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": { 
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "followings":{
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Followings"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Follower"
+                ],
+                "summary": "Unfollow user by collection_id",
                 "description": "",
                 "operationId": "",
                 "produces": [
@@ -756,74 +774,10 @@
                 }
             }
         },
-        "/user/:id/follow": {
-            "put": {
+        "/favorite/:id": {
+            "post": {
                 "tags": [
-                    "User"
-                ],
-                "summary": "Follow user by id",
-                "description": "",
-                "operationId": "",
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "message": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "User not found"
-                    }
-                }
-            }
-        },
-        "/user/:id/unfollow": {
-            "put": {
-                "tags": [
-                    "User"
-                ],
-                "summary": "UnFollow user by id",
-                "description": "",
-                "operationId": "",
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "message": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "User not found"
-                    }
-                }
-            }
-        },
-        "/restaurant/:id/favorite": {
-            "put": {
-                "tags": [
-                    "Restaurant"
+                    "Favorite"
                 ],
                 "summary": "Favorite restaurant by id",
                 "description": "",
@@ -850,12 +804,45 @@
                         "description": "User not found"
                     }
                 }
+            },
+            "get": {
+                "tags": [
+                    "Favorite"
+                ],
+                "summary": "Get Favorite by user_id",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": { 
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "favorites":{
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Favorites"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         },
-        "/restaurant/:id/bucketlist": {
-            "put": {
+        "/bucketlist": {
+            "post": {
                 "tags": [
-                    "Restaurant"
+                    "Bucketlist"
                 ],
                 "summary": "Bucketlist restaurant by id",
                 "description": "",
@@ -874,108 +861,14 @@
                                 },
                                 "message": {
                                     "type": "string"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "User not found"
-                    }
-                }
-            }
-        },
-        "/restaurant/:id/check-in": {
-            "put": {
-                "tags": [
-                    "Restaurant"
-                ],
-                "summary": "Check-in restaurant by id",
-                "description": "",
-                "operationId": "",
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
                                 },
-                                "message": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "User not found"
-                    }
-                }
-            }
-        },
-        "/user/:id/bucketlist": {
-            "get": {
-                "tags": [
-                    "User"
-                ],
-                "summary": "Bucketlist of user",
-                "description": "",
-                "operationId": "",
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "message": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "User not found"
-                    }
-                }
-            }
-        },
-        "/user/:id/restaurants": {
-            "get": {
-                "tags": [
-                    "User"
-                ],
-                "summary": "restaurants visited by a user",
-                "description": "",
-                "operationId": "",
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "restaurants": {
-                                    "type": "array",
+                                "bucketlist":{
+                                    "type": "object",
                                     "items": {
-                                        "$ref": "#/definitions/Restaurant"
+                                        "$ref": "#/definitions/BucketList"
                                     }
                                 }
                             }
-
                         }
                     },
                     "404": {
@@ -984,12 +877,126 @@
                 }
             }
         },
-        "/comment/:id/like": {
-            "put": {
+        "/bucketlist/:id": {
+            "get": {
                 "tags": [
-                    "Comment"
+                    "Bucketlist"
                 ],
-                "summary": "Like a comment by id",
+                "summary": "Get Bucketlist by user_id",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "bucketlist":{
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/BucketList"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            }
+        },
+        "/checkin": {
+            "post": {
+                "tags": [
+                    "Checkin"
+                ],
+                "summary": "Checkin restaurant by id",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "checkedin":{
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#/definitions/CheckedIn"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            }
+        },
+        "/checkin/:id": {
+            "get": {
+                "tags": [
+                    "Checkin"
+                ],
+                "summary": "Get Bucketlist by user_id",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "checked-in":{
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CheckedIn"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            }
+        },
+        "/like/:id": {
+            "post": {
+                "tags": [
+                    "Like"
+                ],
+                "summary": "Like a review by id",
                 "description": "",
                 "operationId": "",
                 "produces": [
@@ -1014,14 +1021,42 @@
                         "description": "User not found"
                     }
                 }
-            }
-        },
-        "/review/:id/like": {
-            "put": {
+            },
+            "get": {
                 "tags": [
-                    "Comment"
+                    "Like"
                 ],
-                "summary": "Like a review by id",
+                "summary": "Get likes on target_id",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Like"
+                ],
+                "summary": "Unlike by target_id",
                 "description": "",
                 "operationId": "",
                 "produces": [
@@ -1070,6 +1105,12 @@
                                 },
                                 "message": {
                                     "type": "string"
+                                },
+                                "order":{
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#/definitions/Order"
+                                    }
                                 }
                             }
                         }
@@ -1078,8 +1119,43 @@
                         "description": "User not found"
                     }
                 }
+            },
+            "get": {
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Orders made by a user",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "orders":{
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#/definitions/Order"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Order not found"
+                    }
+                }
             }
-
         },
         "/order/:id": {
             "get": {
@@ -1101,8 +1177,14 @@
                                 "success": {
                                     "type": "boolean"
                                 },
-                                "order": {
-                                    "$ref": "#/definitions/Order"
+                                "message": {
+                                    "type": "string"
+                                },
+                                "orders":{
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Order"
+                                    }
                                 }
                             }
                         }
@@ -1111,14 +1193,12 @@
                         "description": "User not found"
                     }
                 }
-            }
-        },
-        "/user/:id/orders": {
-            "get": {
+            },
+            "patch": {
                 "tags": [
-                    "User"
+                    "Order"
                 ],
-                "summary": "Orders made by a user",
+                "summary": "Make an order",
                 "description": "",
                 "operationId": "",
                 "produces": [
@@ -1133,14 +1213,16 @@
                                 "success": {
                                     "type": "boolean"
                                 },
-                                "orders": {
+                                "message": {
+                                    "type": "string"
+                                },
+                                "order":{
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/Order"
                                     }
                                 }
                             }
-
                         }
                     },
                     "404": {
@@ -1149,7 +1231,7 @@
                 }
             }
         },
-        "/restaurant/:id/question": {
+        "/question": {
             "post": {
                 "tags": [
                     "Question"
@@ -1171,22 +1253,28 @@
                                 },
                                 "message": {
                                     "type": "string"
+                                },
+                                "question":{
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#/definitions/Question"
+                                    }
                                 }
                             }
                         }
                     },
                     "404": {
-                        "description": "User not found"
+                        "description": "Restaurant not found"
                     }
                 }
-            } 
+            }
         },
-        "/chat/:roomId": {
-            "post": {
+        "/question/:id": {
+            "patch": {
                 "tags": [
-                    "Chat"
+                    "Question"
                 ],
-                "summary": "Send message to chat-room",
+                "summary": "Send question to restaurant",
                 "description": "",
                 "operationId": "",
                 "produces": [
@@ -1203,16 +1291,35 @@
                                 },
                                 "message": {
                                     "type": "string"
+                                },
+                                "question":{
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#/definitions/Question"
+                                    }
                                 }
                             }
                         }
                     },
                     "404": {
-                        "description": "User not found"
+                        "description": "Restaurant not found"
                     }
                 }
+            }
+        },
+        "/chat/:roomId": {
+            "post": {
+                "tags": [
+                    "Chat"
+                ],
+                "summary": "Send message to chat-room",
+                "description": "",
+                "operationId": "",
+                "produces": [
+                    "application/json"
+                ]
             },
-            "get":{  
+            "get": {
                 "tags": [
                     "Chat"
                 ],
@@ -1256,42 +1363,6 @@
         }
     },
     "definitions": {
-        "Order": {
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "user_id": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "restaurant_id": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "plates": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Plate"
-                    }
-                },
-                "address": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "status": {
-                    "type": "string",
-                    "description": "Order Status",
-                    "enum": [
-                        "placed",
-                        "approved",
-                        "delivered"
-                    ]
-                }
-            }
-        },
         "User": {
             "type": "object",
             "properties": {
@@ -1349,6 +1420,83 @@
                 "name": {
                     "type": "string",
                     "example": "Ahmed Kamal"
+                }
+            }
+        },
+        "Plate": {
+            "type": "object",
+            "properties": {
+                "restaurant_id": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "category": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "promotion": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "isOffered": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "prices": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "size": {
+                                "type": "string"
+                            },
+                            "price": {
+                                "type": "integer",
+                                "format": "int64"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "Order": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "user_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "restaurant_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "plates": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Plate"
+                    }
+                },
+                "address": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Order Status",
+                    "enum": [
+                        "placed",
+                        "approved",
+                        "delivered"
+                    ]
                 }
             }
         },
@@ -1419,7 +1567,7 @@
                 }
             }
         },
-        "Reviews&Ratings": {
+        "Reviews": {
             "type": "object",
             "properties": {
                 "id": {
@@ -1512,7 +1660,7 @@
                 }
             }
         },
-        "Followings&Followers": {
+        "Followings": {
             "type": "object",
             "properties": {
                 "user_id": {
@@ -1605,62 +1753,6 @@
                                 "format": "int64"
                             }
 
-                        }
-                    }
-                }
-            }
-        },
-        "ApiResponse": {
-            "type": "object",
-            "properties": {
-                "code": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "type": {
-                    "type": "string"
-                },
-                "message": {
-                    "type": "string"
-                }
-            }
-        },
-        "Plate": {
-            "type": "object",
-            "properties": {
-                "restaurant_id": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "category": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "promotion": {
-                    "type": "boolean",
-                    "default": false
-                },
-                "isOffered": {
-                    "type": "boolean",
-                    "default": false
-                },
-                "prices": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "size": {
-                                "type": "string"
-                            },
-                            "price": {
-                                "type": "integer",
-                                "format": "int64"
-                            }
                         }
                     }
                 }
